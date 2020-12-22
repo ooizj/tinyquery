@@ -1,0 +1,68 @@
+package me.ooi.tinyquery.base;
+
+import java.lang.reflect.Field;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import com.google.common.base.CaseFormat;
+
+import me.ooi.tinyquery.QueryExecutionContextBuildException;
+import me.ooi.tinyquery.annotation.Id;
+import me.ooi.tinyquery.annotation.Table;
+import me.ooi.tinyquery.util.CopyUtils;
+
+/**
+ * @author jun.zhao
+ * @since 1.0
+ */
+public class EntityUtils {
+	
+	/**
+	 * get table's name by entityClass
+	 * @param entityClass
+	 * @return
+	 */
+	public static String tableName(Class<?> entityClass) {
+		Table table = entityClass.getAnnotation(Table.class);
+		if( table == null ) {
+			throw new QueryExecutionContextBuildException("table name not found.");
+		}
+		return table.name();
+	}
+	
+	/**
+	 * javabean字段名转换为数据库字段名，采用驼峰转下划线的方式（如：“userId”会转为“user_id”）
+	 * @param beanField
+	 * @return
+	 */
+	public static String beanFieldToDbField(String beanField) {
+		return CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, beanField);
+	}
+	
+	/**
+	 * 获取不为NULL的字段
+	 * @param entity
+	 * @return
+	 */
+	public static Map<String, Object> getNotNullField(Object entity){
+		Map<String, Object> ret = new LinkedHashMap<String, Object>();
+		CopyUtils.copy(entity, ret);
+		return ret;
+	}
+	
+	/**
+	 * 获取ID字段（标注有{@link com.ibm.common.tinyquery.annotation.Id}注解的字段）
+	 * @param entityClass
+	 * @return
+	 */
+	public static Field getIdField(Class<?> entityClass) {
+		for (Field field : entityClass.getDeclaredFields()) {
+			if( field.isAnnotationPresent(Id.class) ) {
+				return field;
+			}
+		}
+		
+		return null;
+	}
+
+}

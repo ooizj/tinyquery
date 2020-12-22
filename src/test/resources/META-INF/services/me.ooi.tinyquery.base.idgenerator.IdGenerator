@@ -1,0 +1,4 @@
+
+me.ooi.tinyquery.base.idgenerator.MysqlIdGenerator
+#me.ooi.tinyquery.base.idgenerator.OracleIdGenerator
+
