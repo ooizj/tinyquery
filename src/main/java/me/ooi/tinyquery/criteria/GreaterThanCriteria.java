@@ -5,12 +5,12 @@ import java.util.List;
 /**
  * @author jun.zhao
  */
-public class EqualsCriteria extends AbstractCriteria {
+public class GreaterThanCriteria extends AbstractCriteria {
 	
 	private String columnName;
 	private Object value;
 	
-	public EqualsCriteria(String columnName, Object value) {
+	public GreaterThanCriteria(String columnName, Object value) {
 		super();
 		this.columnName = columnName;
 		this.value = value;
@@ -18,7 +18,7 @@ public class EqualsCriteria extends AbstractCriteria {
 
 	@Override
 	public String getQuery() {
-		return String.format(" %s = ? ", columnName);
+		return String.format(" %s > ? ", columnName);
 	}
 
 	@Override

@@ -1,4 +1,0 @@
-#me.ooi.tinyquery.spring.CMTConnectionFactory
-#me.ooi.tinyquery.spring.SpringJdbcConnectionFactory
-me.ooi.tinyquery.DefaultConnectionFactory
-

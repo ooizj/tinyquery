@@ -3,13 +3,15 @@ package me.ooi.tinyquery.base;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-import me.ooi.tinyquery.util.ClassUtils;
-
 /**
  * @author jun.zhao
  * @since 1.0
  */
 public class QueryInterfaceUtils {
+	
+	private static boolean isEmpty(Type[] types) {
+		return (types == null || types.length == 0);
+	}
 	
 	/**
 	 * get queryInterface's entity class
@@ -19,12 +21,12 @@ public class QueryInterfaceUtils {
 	@SuppressWarnings("rawtypes")
 	public static Class getEntityClass(Class<?> queryInterface) {
 		Type[] genericInterfaces = queryInterface.getGenericInterfaces();
-		if( ClassUtils.isEmpty(genericInterfaces) ) {
+		if( isEmpty(genericInterfaces) ) {
 			return null;
 		}
 		
 		Type[] argTypes = ((ParameterizedType) genericInterfaces[0]).getActualTypeArguments();
-		if( ClassUtils.isEmpty(argTypes) ) {
+		if( isEmpty(argTypes) ) {
 			return null;
 		}
 		

@@ -1,5 +1,7 @@
 package me.ooi.tinyquery;
 
+import java.lang.reflect.Method;
+
 import lombok.Data;
 
 /**
@@ -29,6 +31,9 @@ public class QueryDefinition {
 	//方法名
 	private String methodName;
 	
+	//方法
+	private Method method;
+	
 	//返回类型
 	private Class<?> returnType;
 	
@@ -38,13 +43,10 @@ public class QueryDefinition {
 	//query
 	private String query;
 	
-	//是否有分页参数
-	private boolean hasPagingParam = false;
-	
-	//是否返回分页
-	private boolean hasPagingResult = false;
-	
 	//参数类型
 	private Class<?>[] parameterTypes;
+	
+	//拦截器
+	private Interceptor[] interceptors;
 	
 }

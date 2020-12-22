@@ -19,10 +19,8 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 import me.ooi.tinyquery.dbutils.ColumnListHandler;
-import me.ooi.tinyquery.dbutils.InputTypeConvertor;
 import me.ooi.tinyquery.dbutils.SingleColumnResultHandler;
 import me.ooi.tinyquery.util.ClassUtils;
 
@@ -37,11 +35,9 @@ public class DefaultQueryExecutor implements QueryExecutor{
 	};
 
 	protected DataSource dataSource;
-
+	
 	@Override
 	public Object execute(QueryExecutionContext context) throws SQLException {
-		beforeExecute(context);
-		InputTypeConvertor.argumentsConvert(context.getArgs());
 		if (QueryDefinition.Type.SELECT == context.getQueryDefinition().getType()) {
 			return select(context);
 		} else {
@@ -50,24 +46,13 @@ public class DefaultQueryExecutor implements QueryExecutor{
 	}
 	
 	public Object select(QueryExecutionContext context) throws SQLException {
-		printQuery(context);
 		return new QueryRunner(true/*true for oracle*/)
-				.query(getConnection(), context.getUseQuery(), chooseResultSetHandler(context.getQueryDefinition()), context.getArgs());
+				.query(getConnection(), context.getQuery(), chooseResultSetHandler(context.getQueryDefinition()), context.getArgs());
 	}
 	
 	public Object update(QueryExecutionContext context) throws SQLException {
-		printQuery(context);
 		return new QueryRunner(true/*true for oracle*/)
-				.update(getConnection(), context.getUseQuery(), context.getArgs());
-	}
-	
-	private void printQuery(QueryExecutionContext context) {
-		System.out.println(context.getUseQuery());
-		System.out.println(ToStringBuilder.reflectionToString(context.getArgs()));
-	}
-	
-	protected void beforeExecute(QueryExecutionContext context) {
-		context.setUseQuery(context.getQueryDefinition().getQuery());
+				.update(getConnection(), context.getQuery(), context.getArgs());
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -78,7 +63,7 @@ public class DefaultQueryExecutor implements QueryExecutor{
 			
 			Class<?> genericClass = null;
 			if( def.getReturnType().equals(def.getGenericReturnType())/* have not Generic type */ || 
-				(genericClass = ClassUtils.getReturnTypeFirstGenericClass(def.getGenericReturnType())) == null ||
+				(genericClass = ClassUtils.getFirstGenericClass(def.getGenericReturnType())) == null ||
 				Map.class.isAssignableFrom(genericClass) ) {
 				
 				return new MapListHandler(rowProcessor);

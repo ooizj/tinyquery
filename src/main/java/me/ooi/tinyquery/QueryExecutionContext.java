@@ -1,8 +1,5 @@
 package me.ooi.tinyquery;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import me.ooi.tinyquery.base.Page;
@@ -18,12 +15,13 @@ public class QueryExecutionContext {
 	private QueryDefinition queryDefinition;
 	
 	//最终使用的query，比如insert语句就是动态的
-	private String useQuery;
+	private String query;
 	
+	//实参
 	private Object[] args;
-	private Page page;
 	
-	private Queue<Task> afterExecutionTasks = new LinkedList<Task>();
+	//分页信息
+	private Page page;
 	
 	public QueryExecutionContext(QueryDefinition queryDefinition, Object[] args) {
 		super();

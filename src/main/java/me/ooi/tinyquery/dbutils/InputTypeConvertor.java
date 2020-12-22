@@ -1,45 +1,49 @@
 package me.ooi.tinyquery.dbutils;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
-import lombok.extern.slf4j.Slf4j;
+import me.ooi.tinyquery.Configuration;
+import me.ooi.tinyquery.QueryBuildException;
+import me.ooi.tinyquery.ServiceRegistry;
+import me.ooi.tinyquery.util.ClassUtils;
 import me.ooi.typeconvertor.TypeConvertUtils;
 
 /**
  * @author jun.zhao
  * @since 1.0
  */
-@Slf4j
 public class InputTypeConvertor {
 	
-	private static final String path = "/typeconvert-input.properties";
+	private Map<Class<?>, Class<?>> needConvertTypeMap = new HashMap<Class<?>, Class<?>>();
 	
-	private static Map<Class<?>, Class<?>> needConvertTypeMap = new HashMap<Class<?>, Class<?>>();
-	
-	static {
-		Properties needConvertTypeProperties = new Properties();
-		try {
-			needConvertTypeProperties.load(InputTypeConvertor.class.getResourceAsStream(path));
-		} catch (IOException e) {
-			e.printStackTrace();
+	public InputTypeConvertor() {
+		Configuration cfg = ServiceRegistry.INSTANCE.getConfiguration();
+		
+		if( Configuration.DBTYPE_MYSQL.equalsIgnoreCase(cfg.getDbtype()) ) {
+			needConvertTypeMap.put(java.util.Date.class, java.sql.Timestamp.class);
+		}else if( Configuration.DBTYPE_ORACLE.equalsIgnoreCase(cfg.getDbtype()) ) {
+			needConvertTypeMap.put(java.util.Date.class, ClassUtils.getClass("oracle.sql.TIMESTAMP"));
 		}
 		
-		for (Map.Entry<Object, Object> entry : needConvertTypeProperties.entrySet()) {
-			try {
-				String fromClassName = (String) entry.getKey();
-				String toClassName = (String) entry.getValue();
-				needConvertTypeMap.put(Class.forName(fromClassName), Class.forName(toClassName));
-			} catch (ClassNotFoundException e) {
-				log.error(e.getMessage(), e);
+		String needConvertStr = (String) ServiceRegistry.INSTANCE.getConfiguration().get("app.default_input_type_converts");
+		if( needConvertStr != null ) {
+			String[] needConvertClassPairStrs = needConvertStr.split(",");
+			for (String needConvertClassPairStr : needConvertClassPairStrs) {
+				try {
+					String[] needConvertClassPairs = needConvertClassPairStr.split("=");
+					String fromClassName = needConvertClassPairs[0];
+					String toClassName = needConvertClassPairs[1];
+					needConvertTypeMap.put(Class.forName(fromClassName), Class.forName(toClassName));
+				} catch (ClassNotFoundException e) {
+					throw new QueryBuildException(e);
+				}
 			}
 		}
 	}
 	
-	private static Object doConvert(Object source) {
+	private Object doConvert(Object source) {
 		if( source == null ) {
 			return null;
 		}
@@ -58,7 +62,7 @@ public class InputTypeConvertor {
 	 * @param arg
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static void argumentsConvert(Object arg) {
+	public void argumentsConvert(Object arg) {
 		if( arg == null ) {
 			return;
 		}

@@ -2,8 +2,12 @@ package me.ooi.tinyquery;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import me.ooi.tinyquery.annotation.Interceptors;
 import me.ooi.tinyquery.annotation.Select;
 import me.ooi.tinyquery.annotation.Update;
 
@@ -29,18 +33,19 @@ public class QueryDefinitionProvider {
 	}
 	
 	public void init(QueryDefinition queryDefinition) {
-		queryDefinition.setKey(QueryDefinitionManager.getKey(queryInterface, method));
+		queryDefinition.setMethod(method);
 		queryDefinition.setMethodName(method.getName());
-		queryDefinition.setQuery(getCommand(method));
-		queryDefinition.setType(getCommandType(method));
+		queryDefinition.setQuery(getCommand());
+		queryDefinition.setType(getCommandType());
 		queryDefinition.setReturnType(method.getReturnType());
 		queryDefinition.setGenericReturnType(method.getGenericReturnType());
 		queryDefinition.setParameterTypes(method.getParameterTypes());
 		queryDefinition.setMethodDeclaringClass(method.getDeclaringClass());
 		queryDefinition.setQueryInterface(queryInterface);
+		queryDefinition.setInterceptors(getInterceptors(queryDefinition));
 	}
 	
-	protected String getCommand(Method method) {
+	protected String getCommand() {
 		if( method.isAnnotationPresent(Select.class) ) {
 			Select query = method.getAnnotation(Select.class);
 			if( query.source() == QuerySource.ANNOTATION ) {
@@ -64,7 +69,7 @@ public class QueryDefinitionProvider {
 		}
 	}
 	
-	protected QueryDefinition.Type getCommandType(Method method) {
+	protected QueryDefinition.Type getCommandType() {
 		if( method.isAnnotationPresent(Select.class) ) {
 			return QueryDefinition.Type.SELECT;
 		}else if( method.isAnnotationPresent(Update.class) ) {
@@ -73,5 +78,42 @@ public class QueryDefinitionProvider {
 			throw new NotFoundCommandException();
 		}
 	}
-
+	
+	/**
+	 * get all of Interceptors and prepare
+	 * @param queryDefinition
+	 * @return
+	 */
+	protected Interceptor[] getInterceptors(QueryDefinition queryDefinition) {
+		
+		List<Interceptor> allInterceptor = new ArrayList<Interceptor>();
+		
+		List<Class<? extends Interceptor>> annotationInterceptorClasses = new ArrayList<Class<? extends Interceptor>>();
+		if( method.isAnnotationPresent(Interceptors.class) ) {
+			Interceptors interceptors = method.getAnnotation(Interceptors.class);
+			annotationInterceptorClasses.addAll(Arrays.asList(interceptors.value()));
+		}
+		
+		//add interceptors order by META-INF/services/me.ooi.tinyquery.Interceptor 
+		for (Interceptor interceptor : ServiceRegistry.INSTANCE.getInterceptors()) {
+			
+			//add annotation interceptors
+			for (Class<? extends Interceptor> annotationInterceptorClass : annotationInterceptorClasses) {
+				if( annotationInterceptorClass.isInstance(interceptor) ) {
+					interceptor.prepare(queryDefinition);
+					allInterceptor.add(interceptor);
+				}
+			}
+			
+			if( (!allInterceptor.contains(interceptor)) && interceptor.accept(queryDefinition) ) {
+				interceptor.prepare(queryDefinition);
+				allInterceptor.add(interceptor);
+			}
+		}
+		
+		Interceptor[] ret = new Interceptor[allInterceptor.size()];
+		allInterceptor.toArray(ret);
+		return ret;
+	}
+	
 }

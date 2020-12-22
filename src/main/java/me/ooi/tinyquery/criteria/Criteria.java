@@ -20,40 +20,114 @@ public class Criteria extends AbstractCriteria {
 	}
 	
 	public Criteria eq(String columnName, Object value) {
-		criterias.add(new EqualsCriteria(columnName, value));
+		AbstractCriteria c = new EqualsCriteria(columnName, value);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
 		return this;
 	}
 	
 	public Criteria ne(String columnName, Object value) {
-		criterias.add(new NotEqualsCriteria(columnName, value));
+		AbstractCriteria c = new NotEqualsCriteria(columnName, value);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
+		return this;
+	}
+	
+	public Criteria gt(String columnName, Object value) {
+		AbstractCriteria c = new GreaterThanCriteria(columnName, value);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
+		return this;
+	}
+	
+	public Criteria ge(String columnName, Object value) {
+		AbstractCriteria c = new GreaterThanOrEqualsCriteria(columnName, value);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
+		return this;
+	}
+	
+	public Criteria lt(String columnName, Object value) {
+		AbstractCriteria c = new LessThanCriteria(columnName, value);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
+		return this;
+	}
+	
+	public Criteria le(String columnName, Object value) {
+		AbstractCriteria c = new LessThanOrEqualsCriteria(columnName, value);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
 		return this;
 	}
 	
 	public Criteria like(String columnName, Object value) {
-		criterias.add(new LikeCriteria(columnName, value));
+		AbstractCriteria c = new LikeCriteria(columnName, value);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
 		return this;
 	}
 	
 	public Criteria in(String columnName, List<?> values) {
-		criterias.add(new InCriteria(columnName, values));
+		AbstractCriteria c = new InCriteria(columnName, values);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
 		return this;
 	}
 	
 	public Criteria notIn(String columnName, List<?> values) {
-		criterias.add(new NotInCriteria(columnName, values));
+		AbstractCriteria c = new NotInCriteria(columnName, values);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
+		return this;
+	}
+	
+	public Criteria isNull(String columnName) {
+		AbstractCriteria c = new IsNullCriteria(columnName);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
+		return this;
+	}
+	
+	public Criteria isNotNull(String columnName) {
+		AbstractCriteria c = new IsNotNullCriteria(columnName);
+		if( size() > 0 ) {
+			c = new AndCriteria(c);
+		}
+		criterias.add(c);
 		return this;
 	}
 	
 	public Criteria and(AbstractCriteria criteria) {
-		if( criterias.isEmpty() ) {
+		if( size() == 0 ) {
 			throw new CriteriaBuildException("other conditions must be included before 'and'.");
 		}
-		criterias.add(new AndCriteria(criteria));
+		this.criterias.add(new AndCriteria(new AbstractCriteria[]{criteria}));
 		return this;
 	}
 	
-	public Criteria or(Criteria criteria) {
-		if( criterias.isEmpty() ) {
+	public Criteria or(AbstractCriteria criteria) {
+		if( size() == 0 ) {
 			throw new CriteriaBuildException("other conditions must be included before 'or'.");
 		}
 		criterias.add(new OrCriteria(criteria));
@@ -65,24 +139,16 @@ public class Criteria extends AbstractCriteria {
 		return this;
 	}
 	
-	public String getQuery() {
-		return getQuery(null);
-	}
-	
 	public String getQuery(String prefix) {
-		return (prefix==null?"":prefix) + getQuery(false);
+		return (prefix==null?"":prefix) + getQuery();
 	}
 
 	@Override
-	public String getQuery(boolean appendPrefix) {
+	public String getQuery() {
 		StringBuffer sb = new StringBuffer();
 		
-		if( criterias.size() > 0 ) {
-			sb.append(criterias.get(0).getQuery(appendPrefix));
-		}
-		
-		for (int i = 1; i < criterias.size(); i++) {
-			sb.append(criterias.get(i).getQuery(true));
+		for (int i = 0; i < criterias.size(); i++) {
+			sb.append(criterias.get(i).getQuery());
 		}
 		
 		return sb.toString();

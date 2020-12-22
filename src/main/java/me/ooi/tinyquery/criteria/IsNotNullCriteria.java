@@ -5,25 +5,22 @@ import java.util.List;
 /**
  * @author jun.zhao
  */
-public class EqualsCriteria extends AbstractCriteria {
+public class IsNotNullCriteria extends AbstractCriteria {
 	
 	private String columnName;
-	private Object value;
 	
-	public EqualsCriteria(String columnName, Object value) {
+	public IsNotNullCriteria(String columnName) {
 		super();
 		this.columnName = columnName;
-		this.value = value;
 	}
 
 	@Override
 	public String getQuery() {
-		return String.format(" %s = ? ", columnName);
+		return String.format(" %s is not null ", columnName);
 	}
 
 	@Override
 	public void addArguments(List<Object> arguments) {
-		arguments.add(value);
 	}
 	
 	@Override

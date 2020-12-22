@@ -29,7 +29,6 @@ public class QueryInvocationHandler implements InvocationHandler{
         }
 		
 		QueryDefinition queryDefinition = QueryDefinitionManager.getQueryDefinition(queryInterface, method);
-		
 		QueryExecutionContext context = new QueryExecutionContext(queryDefinition, args);
 		
 		try {
@@ -38,11 +37,8 @@ public class QueryInvocationHandler implements InvocationHandler{
 			
 			ConnectionHolder.remote();
 			
-			Object result = ServiceRegistry.INSTANCE.getQueryExecutor().execute(context);
-			
-			executeAfter(context);
-			
-			return result;
+			Invocation invocation = new Invocation(ServiceRegistry.INSTANCE.getQueryExecutor(), context);
+			return invocation.invoke();
 			
 		} catch (Throwable t) {
 			throw ExceptionUtil.unwrapThrowable(t);
@@ -62,14 +58,6 @@ public class QueryInvocationHandler implements InvocationHandler{
 		}
 	}
 	
-	/**
-	 * 执行在“execute”方法执行后需要执行的任务
-	 */
-	private void executeAfter(QueryExecutionContext context) {
-		Task task;
-		while( (task = context.getAfterExecutionTasks().poll()) != null ) {
-			task.execute();
-		}
-	}
+	
 	
 }

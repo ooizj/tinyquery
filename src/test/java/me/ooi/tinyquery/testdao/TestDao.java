@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import me.ooi.tinyquery.QuerySource;
+import me.ooi.tinyquery.annotation.CriteriaParam;
 import me.ooi.tinyquery.annotation.Select;
 import me.ooi.tinyquery.annotation.Update;
 import me.ooi.tinyquery.base.BaseQuery;
 import me.ooi.tinyquery.base.Page;
 import me.ooi.tinyquery.base.PageResult;
+import me.ooi.tinyquery.criteria.Criteria;
 import me.ooi.tinyquery.po.T1;
 
 /**
@@ -33,8 +35,12 @@ public interface TestDao extends BaseQuery<T1>{
 	@Select("select * from t1 order by id desc")
 	List<Map> getT1sMap(Page page);
 	
-	@Select("select name from t1")
-	Object[] getT1NameArray();
+//	//error demo
+//	@Select("select name from t1")
+//	Object[] getT1NameArray();
+	
+	@Select("select name from t1 where id = ?")
+	Object[] getT1NameArray(int id);
 	
 	@Select("select name from t1")
 	List<Object[]> getT1NamesArray();
@@ -50,5 +56,11 @@ public interface TestDao extends BaseQuery<T1>{
 	
 	@Select("select * from t1 order by id ")
 	PageResult<T1> getT1sPageResult(Page page);
+	
+	@Select("select * from t1 ")
+	PageResult<T1> getT1sByCriteria(Criteria criteria, Page page);
+	
+	@Select("select * from t1 where id not in(3) ")
+	PageResult<T1> getT1sByCriteria2(@CriteriaParam(prefix = "and") Criteria criteria, Page page);
 	
 }

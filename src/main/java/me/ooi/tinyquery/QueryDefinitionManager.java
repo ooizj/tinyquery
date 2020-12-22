@@ -4,8 +4,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import me.ooi.tinyquery.base.BaseQueryDefinitionProvider;
-
 /**
  * @author jun.zhao
  * @since 1.0
@@ -16,22 +14,18 @@ public class QueryDefinitionManager {
 	
 	public static QueryDefinition getQueryDefinition(Class<?> queryInterface, Method method) {
 		String key = getKey(queryInterface, method) ;
-		QueryDefinition obj = queryDefinitionCache.get(key);
-		if( obj == null ) {
-			obj = createQueryDefinition(queryInterface, method);
-        	queryDefinitionCache.put(key, obj) ;
+		QueryDefinition def = queryDefinitionCache.get(key);
+		if( def == null ) {
+			def = new QueryDefinition();
+			def.setKey(key);
+			new QueryDefinitionProvider(queryInterface, method).init(def);
+        	queryDefinitionCache.put(key, def) ;
 		}
-		return obj;
+		return def;
 	}
 	
 	public static String getKey(Class<?> queryInterface, Method method) {
 		return queryInterface.getName()+"."+method.getName();
 	}
 	
-	private static QueryDefinition createQueryDefinition(Class<?> queryInterface, Method method) {
-		QueryDefinition def = new QueryDefinition();
-		new BaseQueryDefinitionProvider(queryInterface, method).init(def);
-		return def;
-	}
-
 }

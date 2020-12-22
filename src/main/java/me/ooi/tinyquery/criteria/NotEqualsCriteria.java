@@ -17,8 +17,8 @@ public class NotEqualsCriteria extends AbstractCriteria {
 	}
 
 	@Override
-	public String getQuery(boolean appendPrefix) {
-		return (appendPrefix ? " and " : "") + String.format(" %s != ? ", columnName);
+	public String getQuery() {
+		return String.format(" %s != ? ", columnName);
 	}
 
 	@Override

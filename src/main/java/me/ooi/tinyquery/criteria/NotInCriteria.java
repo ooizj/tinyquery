@@ -20,9 +20,8 @@ public class NotInCriteria extends AbstractCriteria {
 	}
 
 	@Override
-	public String getQuery(boolean appendPrefix) {
-		return (appendPrefix ? " and " : "") + 
-				String.format(" %s not in (%s) ", columnName, StringUtils.join(Collections.nCopies(values.size(), "?").iterator(), ","));
+	public String getQuery() {
+		return String.format(" %s not in (%s) ", columnName, StringUtils.join(Collections.nCopies(values.size(), "?").iterator(), ","));
 	}
 
 	@Override

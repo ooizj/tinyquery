@@ -1,9 +1,5 @@
 package me.ooi.tinyquery.util;
 
-import java.beans.BeanInfo;
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -20,36 +16,15 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ClassUtils {
 	
-	public static boolean isEmpty(Type[] types) {
-		return (types == null || types.length == 0);
-	}
-	
+	/**
+	 * 根据类名获取类
+	 * @param className
+	 * @return 不存在则返回null，不抛出异常
+	 */
 	public static Class<?> getClass(String className){
 		try {
-			return Thread.currentThread().getContextClassLoader().loadClass(className);
-//			return Class.forName(className) ;
+			return Class.forName(className, true, Thread.currentThread().getContextClassLoader()) ;
 		} catch (ClassNotFoundException e) {
-			log.error(e.getMessage(), e);
-		} 
-		return null ; 
-	}
-	
-	public static <T> T newInstance(Class<T> clazz){
-		try {
-			return clazz.newInstance() ;
-		} catch (InstantiationException e) {
-			log.error(e.getMessage(), e);
-		} catch (IllegalAccessException e) {
-			log.error(e.getMessage(), e);
-		}
-		return null; 
-	}
-	
-	public static PropertyDescriptor[] getPropertyDescriptors(Class<?> clazz){
-		try {
-			BeanInfo beanInfo = Introspector.getBeanInfo(clazz);
-			return beanInfo.getPropertyDescriptors() ; 
-		} catch (IntrospectionException e) {
 			log.error(e.getMessage(), e);
 		} 
 		return null ; 
@@ -72,11 +47,11 @@ public class ClassUtils {
 	}
 	
 	/**
-	 * 获取方法返回类型的第一个泛型（如：List<String>返回String），如果不是class会产生Cast异常
+	 * 获取“type”的第一个泛型（如：List&lt;String>返回String），如果不是class会产生Cast异常
 	 * @param type
 	 * @return
 	 */
-	public static Class<?> getReturnTypeFirstGenericClass(Type type){
+	public static Class<?> getFirstGenericClass(Type type){
 		if( type instanceof Class<?> ) {
 			return (Class<?>) type;
 		}
@@ -91,6 +66,95 @@ public class ClassUtils {
 			return null;
 		}
 		return (Class<?>) argTypes[0];
+	}
+	
+	/**
+	 * 判断方法参数是否包含某注解
+	 * @param method
+	 * @param annatationClass
+	 * @return
+	 */
+	public static boolean hasAnnotation(Method method, Class<? extends Annotation> annatationClass) {
+		Annotation[][] annotationss = method.getParameterAnnotations();
+		if( annotationss == null ) {
+			return false;
+		}
+		for (Annotation[] annotations : annotationss) {
+			if( annotations == null ) {
+				continue;
+			}
+			for (Annotation annotation : annotations) {
+				if( annotation != null && annatationClass.isInstance(annotation) ) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * 判断参数中是否包含某类型参数
+	 * @param method
+	 * @param clazz
+	 * @return
+	 */
+	public static boolean hasParamType(Method method, Class<?> clazz) {
+		Class<?>[] paramTypes = method.getParameterTypes();
+		if( paramTypes == null ) {
+			return false;
+		}
+		for (Class<?> paramType : paramTypes) {
+			if( clazz == paramType ) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * 获取方法某类型的参数的位置
+	 * @param method
+	 * @param clazz
+	 * @return
+	 */
+	public static int getParamTypeIndex(Method method, Class<?> clazz) {
+		final int NOT_FOUND = -1;
+		Class<?>[] paramTypes = method.getParameterTypes();
+		if( paramTypes == null ) {
+			return NOT_FOUND;
+		}
+		for (int i = 0; i < paramTypes.length; i++) {
+			Class<?> paramType = paramTypes[i];
+			if( clazz == paramType ) {
+				return i;
+			}
+		}
+		return NOT_FOUND;
+	}
+	
+	/**
+	 * 判断方法参数是否包含某注解
+	 * @param method
+	 * @param index
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T extends Annotation> T getAnnotationByIndex(Method method, int index, Class<T> annatationClass) {
+		Annotation[][] annotationss = method.getParameterAnnotations();
+		if( annotationss == null || annotationss.length <= index ) {
+			return null;
+		}
+		
+		Annotation[] annotations = annotationss[index];
+		if( annotations == null ) {
+			return null;
+		}
+		for (Annotation annotation : annotations) {
+			if( annotation != null && annatationClass.isInstance(annotation) ) {
+				return (T) annotation;
+			}
+		}
+		return null;
 	}
 	
 }

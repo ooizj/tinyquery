@@ -15,9 +15,14 @@ public class OrCriteria extends AbstractCriteria {
 	}
 
 	@Override
-	public String getQuery(boolean appendPrefix) {
-		return (appendPrefix ? " or " : "") + 
-				String.format(" (%s) ", criteria.getQuery(false));
+	public String getQuery() {
+		if( criteria.size() == 0 ) {
+			return "";
+		}else if( criteria.size() == 1 ) {
+			return " or " + String.format(" %s ", criteria.getQuery());
+		}else {
+			return " or " + String.format(" (%s) ", criteria.getQuery());
+		}
 	}
 
 	@Override
@@ -27,7 +32,7 @@ public class OrCriteria extends AbstractCriteria {
 	
 	@Override
 	public int size() {
-		return 1;
+		return criteria.size();
 	}
 
 }

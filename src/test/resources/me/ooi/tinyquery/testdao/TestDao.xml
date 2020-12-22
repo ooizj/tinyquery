@@ -3,7 +3,7 @@
 	
 	<select id="getT1s2">
 	<![CDATA[
-		select * from t1 where create_time > ? and create_time < ?
+		select * from t1 where create_time >= ? and create_time < ?
 		order by id desc
 	]]>
 	</select>

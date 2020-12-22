@@ -1,7 +1,6 @@
 package me.ooi.tinyquery.base;
 
 import java.lang.reflect.Field;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.google.common.base.CaseFormat;
@@ -9,7 +8,7 @@ import com.google.common.base.CaseFormat;
 import me.ooi.tinyquery.QueryExecutionContextBuildException;
 import me.ooi.tinyquery.annotation.Id;
 import me.ooi.tinyquery.annotation.Table;
-import me.ooi.tinyquery.util.CopyUtils;
+import me.ooi.tinyquery.util.ReflectUtils;
 
 /**
  * @author jun.zhao
@@ -45,9 +44,7 @@ public class EntityUtils {
 	 * @return
 	 */
 	public static Map<String, Object> getNotNullField(Object entity){
-		Map<String, Object> ret = new LinkedHashMap<String, Object>();
-		CopyUtils.copy(entity, ret);
-		return ret;
+		return ReflectUtils.getNotNullField(entity);
 	}
 	
 	/**

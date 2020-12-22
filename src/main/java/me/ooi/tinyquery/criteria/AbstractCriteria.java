@@ -7,9 +7,7 @@ import java.util.List;
  */
 public abstract class AbstractCriteria {
 	
-	protected String query;
-	
-	public abstract String getQuery(boolean appendPrefix);
+	public abstract String getQuery();
 	
 	public abstract void addArguments(List<Object> arguments);
 	

@@ -17,8 +17,8 @@ public class LikeCriteria extends AbstractCriteria {
 	}
 
 	@Override
-	public String getQuery(boolean appendPrefix) {
-		return (appendPrefix ? " and " : "") + String.format(" %s like ? ", columnName);
+	public String getQuery() {
+		return String.format(" %s like ? ", columnName);
 	}
 
 	@Override
