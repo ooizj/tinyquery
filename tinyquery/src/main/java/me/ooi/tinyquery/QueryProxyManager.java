@@ -1,18 +1,17 @@
 package me.ooi.tinyquery;
 
 import java.lang.reflect.Proxy;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class QueryProxyManager {
 	
 	private QueryInterfaceValidator queryInterfaceValidator = new QueryInterfaceValidator();
 	
-	private Map<String, Object> proxyCache = new HashMap<String, Object>() ;
+	private Map<String, Object> proxyCache = new ConcurrentHashMap<String, Object>() ;
 
     @SuppressWarnings("unchecked")
 	public <T> T getProxy(Class<T> queryInterface) {

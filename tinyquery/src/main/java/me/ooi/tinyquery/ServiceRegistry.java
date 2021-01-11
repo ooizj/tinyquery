@@ -1,22 +1,24 @@
 package me.ooi.tinyquery;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.ServiceLoader;
 
-import me.ooi.tinyquery.base.IdGenerator;
-import me.ooi.tinyquery.base.MysqlIdGenerator;
-import me.ooi.tinyquery.base.MysqlPaging;
-import me.ooi.tinyquery.base.MysqlRecordCountGenerator;
-import me.ooi.tinyquery.base.OracleIdGenerator;
-import me.ooi.tinyquery.base.OraclePaging;
-import me.ooi.tinyquery.base.OracleRecordCountGenerator;
-import me.ooi.tinyquery.base.Paging;
-import me.ooi.tinyquery.base.RecordCountGenerator;
 import me.ooi.tinyquery.dbutils.InputTypeConvertor;
+import me.ooi.tinyquery.interceptor.base.IdGenerator;
+import me.ooi.tinyquery.interceptor.base.MysqlIdGenerator;
+import me.ooi.tinyquery.interceptor.base.MysqlPaging;
+import me.ooi.tinyquery.interceptor.base.MysqlTotalGenerator;
+import me.ooi.tinyquery.interceptor.base.OracleIdGenerator;
+import me.ooi.tinyquery.interceptor.base.OraclePaging;
+import me.ooi.tinyquery.interceptor.base.OracleTotalGenerator;
+import me.ooi.tinyquery.interceptor.base.Paging;
+import me.ooi.tinyquery.interceptor.base.TotalGenerator;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class ServiceRegistry {
 	
@@ -28,8 +30,8 @@ public class ServiceRegistry {
 	private ConnectionFactory connectionFactory;
 	private IdGenerator idGenerator;
 	private Paging paging;
-	private RecordCountGenerator recordCountGenerator;
-	private Iterable<Interceptor> interceptors;
+	private TotalGenerator totalGenerator;
+	private List<Interceptor> interceptors;
 	private InputTypeConvertor inputTypeConvertor;
 	
 	public void init(Configuration cfg) {
@@ -58,14 +60,14 @@ public class ServiceRegistry {
 			}
 		}
 		
-		recordCountGenerator = getService(RecordCountGenerator.class, cl);
-		if( recordCountGenerator == null ) {
+		totalGenerator = getService(TotalGenerator.class, cl);
+		if( totalGenerator == null ) {
 			if( Configuration.DBTYPE_MYSQL.equalsIgnoreCase(cfg.getDbtype()) ) {
-				recordCountGenerator = new MysqlRecordCountGenerator();
+				totalGenerator = new MysqlTotalGenerator();
 			}else if( Configuration.DBTYPE_ORACLE.equalsIgnoreCase(cfg.getDbtype()) ) {
-				recordCountGenerator = new OracleRecordCountGenerator();
+				totalGenerator = new OracleTotalGenerator();
 			}else {
-				throw new ServiceNotConfiguredException(RecordCountGenerator.class.getName());
+				throw new ServiceNotConfiguredException(TotalGenerator.class.getName());
 			}
 		}
 		
@@ -79,7 +81,13 @@ public class ServiceRegistry {
 			queryExecutor = new DefaultQueryExecutor();
 		}
 		
-		interceptors = ServiceLoader.load(Interceptor.class, cl);
+		//init interceptors
+		Iterable<Interceptor> interceptorIt = ServiceLoader.load(Interceptor.class, cl);
+		interceptors = new ArrayList<Interceptor>();
+		for (Interceptor interceptor : interceptorIt) {
+			interceptors.add(interceptor);
+		}
+		interceptors = Collections.unmodifiableList(interceptors);
 		
 		queryProxyManager = new QueryProxyManager();
 		
@@ -141,7 +149,7 @@ public class ServiceRegistry {
 		return idGenerator;
 	}
 
-	public Iterable<Interceptor> getInterceptors() {
+	public List<Interceptor> getInterceptors() {
 		return interceptors;
 	}
 
@@ -149,8 +157,8 @@ public class ServiceRegistry {
 		return inputTypeConvertor;
 	}
 
-	public RecordCountGenerator getRecordCountGenerator() {
-		return recordCountGenerator;
+	public TotalGenerator getTotalGenerator() {
+		return totalGenerator;
 	}
 
 }

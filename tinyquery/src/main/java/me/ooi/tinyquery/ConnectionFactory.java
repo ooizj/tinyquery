@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public interface ConnectionFactory {
 	

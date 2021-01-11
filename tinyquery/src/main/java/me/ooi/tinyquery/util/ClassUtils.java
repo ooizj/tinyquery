@@ -2,8 +2,6 @@ package me.ooi.tinyquery.util;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +9,6 @@ import lombok.extern.log4j.Log4j;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 @Log4j
 public class ClassUtils {
@@ -44,28 +41,6 @@ public class ClassUtils {
 			}
 		}
 		return ret;
-	}
-	
-	/**
-	 * 获取“type”的第一个泛型（如：List&lt;String>返回String），如果不是class会产生Cast异常
-	 * @param type
-	 * @return
-	 */
-	public static Class<?> getFirstGenericClass(Type type){
-		if( type instanceof Class<?> ) {
-			return (Class<?>) type;
-		}
-		
-		if( !(type instanceof ParameterizedType) ) {
-			return null;
-		}
-		
-		ParameterizedType pt = (ParameterizedType) type;
-		Type[] argTypes = pt.getActualTypeArguments();
-		if( argTypes == null || argTypes.length == 0 ) {
-			return null;
-		}
-		return (Class<?>) argTypes[0];
 	}
 	
 	/**
@@ -115,7 +90,7 @@ public class ClassUtils {
 	 * 获取方法某类型的参数的位置
 	 * @param method
 	 * @param clazz
-	 * @return
+	 * @return -1 if not found
 	 */
 	public static int getParamTypeIndex(Method method, Class<?> clazz) {
 		final int NOT_FOUND = -1;
@@ -133,7 +108,7 @@ public class ClassUtils {
 	}
 	
 	/**
-	 * 判断方法参数是否包含某注解
+	 * 获取方法的注解
 	 * @param method
 	 * @param index
 	 * @return

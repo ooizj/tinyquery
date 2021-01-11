@@ -20,7 +20,6 @@ import me.ooi.tinyquery.util.ScanUtils;
  * 		&lt;property name="sacanPackage" value="xxx" /><br>
  * 	&lt;/bean>
  * @author jun.zhao
- * @since 1.0
  */
 public class TinyQuerySetup implements BeanFactoryPostProcessor{
 	

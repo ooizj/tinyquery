@@ -1,12 +1,12 @@
 package me.ooi.tinyquery;
 
-import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 import lombok.Data;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 @Data
 public class QueryDefinition {
@@ -31,14 +31,11 @@ public class QueryDefinition {
 	//方法名
 	private String methodName;
 	
-	//方法
-	private Method method;
-	
 	//返回类型
 	private Class<?> returnType;
 	
-	//返回类型的泛型
-	private java.lang.reflect.Type genericReturnType;
+	//返回类型的泛型，如返回List<User>，则其泛型为User
+	private Class<?> genericReturnClass;
 	
 	//query
 	private String query;
@@ -48,5 +45,15 @@ public class QueryDefinition {
 	
 	//拦截器
 	private Interceptor[] interceptors;
+	
+	private Map<String, Object> additionals = new HashMap<String, Object>();
+	
+	public void put(String key, Object value) {
+		additionals.put(key, value);
+	}
+	
+	public Object get(String key) {
+		return additionals.get(key);
+	}
 	
 }

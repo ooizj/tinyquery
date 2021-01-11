@@ -27,12 +27,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.0</version>
@@ -84,34 +78,6 @@
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>${spring.version}</version>
-		</dependency>
-		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        
-        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
-		<dependency>
-		    <groupId>cglib</groupId>
-		    <artifactId>cglib</artifactId>
-		    <version>3.2.12</version>
-		    <scope>test</scope>
-		</dependency>
-		        
-        <!-- ================================bitronix================================ -->
-		<dependency>
-		    <groupId>javax.transaction</groupId>
-		    <artifactId>jta</artifactId>
-		    <version>1.1</version>
-		    <scope>test</scope>
-		</dependency>
-		<dependency>
-		    <groupId>com.github.marcus-nl.btm</groupId>
-		    <artifactId>btm</artifactId>
-		    <version>${btm.version}</version>
-		    <scope>test</scope>
 		</dependency>
 		
 	</dependencies>

@@ -2,7 +2,6 @@ package me.ooi.tinyquery;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class QueryBuildException extends RuntimeException {
 

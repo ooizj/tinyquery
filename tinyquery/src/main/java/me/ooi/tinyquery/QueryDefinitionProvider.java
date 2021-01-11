@@ -1,19 +1,21 @@
 package me.ooi.tinyquery;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.lang.reflect.WildcardType;
 import java.util.Map;
 
-import me.ooi.tinyquery.annotation.Interceptors;
 import me.ooi.tinyquery.annotation.Select;
 import me.ooi.tinyquery.annotation.Update;
+import me.ooi.tinyquery.interceptor.InterceptorUtils;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class QueryDefinitionProvider {
 	
@@ -32,17 +34,18 @@ public class QueryDefinitionProvider {
 		}
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public void init(QueryDefinition queryDefinition) {
-		queryDefinition.setMethod(method);
 		queryDefinition.setMethodName(method.getName());
 		queryDefinition.setQuery(getCommand());
 		queryDefinition.setType(getCommandType());
 		queryDefinition.setReturnType(method.getReturnType());
-		queryDefinition.setGenericReturnType(method.getGenericReturnType());
+		Type genericReturnType = getGenericReturnType(method.getGenericReturnType());
+		queryDefinition.setGenericReturnClass((genericReturnType instanceof Class) ? ((Class)genericReturnType) : null);
 		queryDefinition.setParameterTypes(method.getParameterTypes());
 		queryDefinition.setMethodDeclaringClass(method.getDeclaringClass());
 		queryDefinition.setQueryInterface(queryInterface);
-		queryDefinition.setInterceptors(getInterceptors(queryDefinition));
+		queryDefinition.setInterceptors(InterceptorUtils.getInterceptors(queryDefinition, method));
 	}
 	
 	protected String getCommand() {
@@ -80,40 +83,79 @@ public class QueryDefinitionProvider {
 	}
 	
 	/**
-	 * get all of Interceptors and prepare
-	 * @param queryDefinition
+	 * is support generic return type.<br>
+	 * support return type: e.g. List&lt;User>, List&lt;T>, List&lt;?>, List&lt;Object[]>, List, T, User
+	 * @param type
 	 * @return
 	 */
-	protected Interceptor[] getInterceptors(QueryDefinition queryDefinition) {
-		
-		List<Interceptor> allInterceptor = new ArrayList<Interceptor>();
-		
-		List<Class<? extends Interceptor>> annotationInterceptorClasses = new ArrayList<Class<? extends Interceptor>>();
-		if( method.isAnnotationPresent(Interceptors.class) ) {
-			Interceptors interceptors = method.getAnnotation(Interceptors.class);
-			annotationInterceptorClasses.addAll(Arrays.asList(interceptors.value()));
+	private boolean isSupportGenericReturnType(Type genericReturnType) {
+		if( genericReturnType instanceof Class<?> ) { //e.g. List, User
+			return true;
 		}
 		
-		//add interceptors order by META-INF/services/me.ooi.tinyquery.Interceptor 
-		for (Interceptor interceptor : ServiceRegistry.INSTANCE.getInterceptors()) {
-			
-			//add annotation interceptors
-			for (Class<? extends Interceptor> annotationInterceptorClass : annotationInterceptorClasses) {
-				if( annotationInterceptorClass.isInstance(interceptor) ) {
-					interceptor.prepare(queryDefinition);
-					allInterceptor.add(interceptor);
-				}
-			}
-			
-			if( (!allInterceptor.contains(interceptor)) && interceptor.accept(queryDefinition) ) {
-				interceptor.prepare(queryDefinition);
-				allInterceptor.add(interceptor);
-			}
+		if( genericReturnType instanceof TypeVariable ) {//e.g. T
+			return true;
 		}
 		
-		Interceptor[] ret = new Interceptor[allInterceptor.size()];
-		allInterceptor.toArray(ret);
-		return ret;
+		if( !(genericReturnType instanceof ParameterizedType) ) {
+			return false;
+		}
+		
+		ParameterizedType pt = (ParameterizedType) genericReturnType;
+		Type[] argTypes = pt.getActualTypeArguments();
+		if( argTypes == null || argTypes.length != 1 ) {
+			return false;
+		}
+		
+		Type argType = argTypes[0];
+		if( argType instanceof Class ) { //e.g. List<User>
+			return true;
+		}else if( argType instanceof TypeVariable ){ //e.g. List<T>
+			return true;
+		}else if( argType instanceof WildcardType ){ //e.g. List<?>
+			return true;
+		}else if( argType instanceof GenericArrayType ){ //e.g. List<Object[]>
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	/**
+	 * get generic return type.<br>
+	 * support return type: e.g. List&lt;User>, List&lt;T>, List&lt;?>, List&lt;Object[]>, List, T, User
+	 * @param genericReturnType
+	 * @return e.g. User, T, Object[], null
+	 */
+	protected Type getGenericReturnType(Type genericReturnType) {
+		if( !isSupportGenericReturnType(genericReturnType) ) {
+			throw new QueryBuildException("the generic return type["+genericReturnType+"] is not supported.");
+		}
+		
+		if( !(genericReturnType instanceof ParameterizedType) ) {
+			return null;
+		}
+		
+		ParameterizedType pt = (ParameterizedType) genericReturnType;
+		Type[] argTypes = pt.getActualTypeArguments();
+		if( argTypes == null || argTypes.length != 1 ) {
+			return null;
+		}
+		
+		Type argType = argTypes[0];
+		if( argType instanceof Class ) { //e.g. List<User>
+			return argType;
+		}else if( argType instanceof TypeVariable ){ //e.g. List<T>
+			return argType;
+		}else if( argType instanceof GenericArrayType ){ //e.g. List<Object[]>
+			GenericArrayType gat = (GenericArrayType) argType;
+			if( !(gat.getGenericComponentType() instanceof Class) ) {
+				return null;
+			}
+			return Array.newInstance((Class<?>)gat.getGenericComponentType(), 0).getClass();
+		}else {
+			return null;
+		}
 	}
 	
 }

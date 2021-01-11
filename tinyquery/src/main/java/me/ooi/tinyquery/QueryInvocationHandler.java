@@ -10,7 +10,6 @@ import me.ooi.tinyquery.util.ExceptionUtil;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 @Slf4j
 public class QueryInvocationHandler implements InvocationHandler{

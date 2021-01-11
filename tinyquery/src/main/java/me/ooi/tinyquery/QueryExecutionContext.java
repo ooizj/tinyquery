@@ -1,32 +1,36 @@
 package me.ooi.tinyquery;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import me.ooi.tinyquery.base.Page;
+import java.util.HashMap;
+import java.util.Map;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
-@Data
-@NoArgsConstructor
 public class QueryExecutionContext {
 	
-	private QueryDefinition queryDefinition;
+	@Getter @Setter private QueryDefinition queryDefinition;
+	@Getter @Setter private String query;
+	@Getter @Setter private Object[] args;
 	
-	//最终使用的query，比如insert语句就是动态的
-	private String query;
+	private Map<String, Object> additionals = new HashMap<String, Object>();
 	
-	//实参
-	private Object[] args;
-	
-	//分页信息
-	private Page page;
+	public QueryExecutionContext() {
+	}
 	
 	public QueryExecutionContext(QueryDefinition queryDefinition, Object[] args) {
-		super();
 		this.queryDefinition = queryDefinition;
 		this.args = args;
 	}
 
+	public void put(String key, Object value) {
+		additionals.put(key, value);
+	}
+	
+	public Object get(String key) {
+		return additionals.get(key);
+	}
+	
 }

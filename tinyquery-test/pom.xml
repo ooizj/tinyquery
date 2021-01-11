@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>me.ooi</groupId>
+    <artifactId>tinyquery-parent</artifactId>
+    <version>0.1</version>
+  </parent>
+  <artifactId>tinyquery-test</artifactId>
+  
+	<properties>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<spring.version>3.1.4.RELEASE</spring.version>
+<!-- 		<spring.version>2.5.5</spring.version> -->
+		<btm.version>3.0.0-mk1</btm.version>
+	</properties>
+
+	<dependencies>
+	
+		<dependency>
+			<groupId>me.ooi</groupId>
+			<artifactId>tinyquery</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.ooi</groupId>
+			<artifactId>tinyquery-spring</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+<!-- 		AssertJ 3.x requires Java 8 or higher (use the org.assertj.core.api.Java6Assertions entry point on Android API Level < 26) -->
+<!-- 		AssertJ 2.x requires Java 7 or higher (use the org.assertj.core.api.Java6Assertions entry point on Android API Level < 26) -->
+<!-- 		AssertJ 1.x requires Java 6 or higher -->
+		<dependency>
+		    <groupId>org.assertj</groupId>
+		    <artifactId>assertj-core</artifactId>
+		    <version>1.7.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.46</version>
+		</dependency>
+		
+		
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>3.2.12</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.transaction</groupId>
+		    <artifactId>jta</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.github.marcus-nl.btm</groupId>
+		    <artifactId>btm</artifactId>
+		    <version>${btm.version}</version>
+		</dependency>
+		
+	</dependencies>
+
+	
+</project>

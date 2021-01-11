@@ -10,7 +10,6 @@ import me.ooi.tinyquery.QuerySource;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

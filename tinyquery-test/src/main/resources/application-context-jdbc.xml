@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+  http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+  http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.3.xsd">
+
+	<context:component-scan base-package="me.ooi.tinyquery.spring" />
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/mytest?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;pinGlobalTxToPhysicalConnection=true&amp;useSSL=false&amp;serverTimezone=GMT" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!-- 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" /> -->
+<!-- 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL" /> -->
+<!-- 		<property name="username" value="user" /> -->
+<!-- 		<property name="password" value="pwd" /> -->
+<!-- 	</bean> -->
+
+	<bean id="tinyqueryConfiguration" class="me.ooi.tinyquery.Configuration" init-method="init" scope="singleton">
+		<property name="dataSource" ref="dataSource" />
+		<property name="dbtype" value="mysql" />
+		<property name="props">
+			<map>
+				<entry key="app.connectionFactory" value="me.ooi.tinyquery.spring.SpringJdbcConnectionFactory"/>
+			</map>
+		</property>
+	</bean>
+	<bean class="me.ooi.tinyquery.spring.TinyQuerySetup" scope="singleton" depends-on="tinyqueryConfiguration">
+		<property name="sacanPackage" value="me.ooi.tinyquery.testdao" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans>

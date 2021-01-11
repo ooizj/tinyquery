@@ -11,7 +11,6 @@ import me.ooi.tinyquery.ConnectionFactory;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class SpringJdbcConnectionFactory implements ConnectionFactory {
 

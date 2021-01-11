@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+  http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+  http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.3.xsd">
+
+	<context:component-scan base-package="me.ooi.tinyquery.spring" />
+
+	<bean id="tinyqueryConfiguration" class="me.ooi.tinyquery.Configuration" init-method="init" scope="singleton">
+		<property name="dataSource" ref="ds1" />
+		<property name="dbtype" value="mysql" />
+		<property name="props">
+			<map>
+				<entry key="app.connectionFactory" value="me.ooi.tinyquery.spring.CMTConnectionFactory"/>
+			</map>
+		</property>
+	</bean>
+	<bean class="me.ooi.tinyquery.spring.TinyQuerySetup" scope="singleton" depends-on="tinyqueryConfiguration">
+		<property name="sacanPackage" value="me.ooi.tinyquery.testdao" />
+	</bean>
+	
+	<!-- 	Bitronix BTM -->
+	<bean id="abstractDataSource" class="bitronix.tm.resource.jdbc.PoolingDataSource" abstract="true" init-method="init" destroy-method="close">
+		<property name="acquireIncrement" value="1"/>
+		<property name="acquisitionInterval" value="1"/>
+		<property name="acquisitionTimeout" value="120"/>
+		<property name="allowLocalTransactions" value="true"/>
+		<property name="automaticEnlistingEnabled" value="true"/>
+		<property name="enableJdbc4ConnectionTest" value="true"/>
+		 <!-- 
+		 	ignoreRecoveryFailures = false
+				grant select on sys.dba_pending_transactions to myUser;
+				grant select on sys.pending_trans$ to myUser;
+				grant select on sys.dba_2pc_pending to myUser;
+				grant execute on sys.dbms_system to myUser;
+				
+			ignoreRecoveryFailures = true
+				...
+				  -->
+		<property name="ignoreRecoveryFailures" value="false"/>
+
+		<property name="isolationLevel" value="READ_COMMITTED"/>
+		<property name="maxIdleTime" value="60"/>
+		<property name="maxLifeTime" value="300"/>
+		<property name="minPoolSize" value="1"/>
+		<property name="maxPoolSize" value="5"/>
+		<property name="preparedStatementCacheSize" value="0"/>
+		<property name="shareTransactionConnections" value="false"/>
+		<property name="useTmJoin" value="true"/>
+	</bean>
+	<bean id="ds1" parent="abstractDataSource">
+		<property name="uniqueName" value="jdbc/btm-ds1" />
+		<property name="className" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource" />
+		<property name="driverProperties">
+		  <props>
+		     <prop key="URL">jdbc:mysql://127.0.0.1:3306/mytest?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;pinGlobalTxToPhysicalConnection=true&amp;useSSL=false&amp;serverTimezone=GMT</prop>
+		    <prop key="user">root</prop>
+		    <prop key="password">root</prop>
+		  </props>
+		</property>
+	</bean>
+<!-- 	<bean id="ds1" parent="abstractDataSource"> -->
+<!-- 		<property name="uniqueName" value="jdbc/btm-ds1" /> -->
+<!-- 		<property name="className" value="oracle.jdbc.xa.client.OracleXADataSource" /> -->
+<!-- 		<property name="driverProperties"> -->
+<!-- 		  <props> -->
+<!-- 		    <prop key="URL">jdbc:oracle:thin:@localhost:1521:ORCL</prop> -->
+<!-- 		    <prop key="user">user</prop> -->
+<!-- 		    <prop key="password">pwd</prop> -->
+<!-- 		  </props> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
+	<bean id="bitronixTransactionManager" factory-method="getTransactionManager" class="bitronix.tm.TransactionManagerServices" 
+	  	destroy-method="shutdown"/>
+	  	
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" primary="true">
+		<property name="transactionSynchronizationRegistryName" value="java:comp/TransactionSynchronizationRegistry"/>
+		<property name="transactionManager" ref="bitronixTransactionManager" />
+		<property name="userTransaction" ref="bitronixTransactionManager" />
+		<property name="allowCustomIsolationLevels" value="true" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans>

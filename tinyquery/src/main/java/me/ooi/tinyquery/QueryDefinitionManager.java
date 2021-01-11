@@ -1,16 +1,15 @@
 package me.ooi.tinyquery;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class QueryDefinitionManager {
 	
-	private static Map<String, QueryDefinition> queryDefinitionCache = new HashMap<String, QueryDefinition>();
+	private static Map<String, QueryDefinition> queryDefinitionCache = new ConcurrentHashMap<String, QueryDefinition>();
 	
 	public static QueryDefinition getQueryDefinition(Class<?> queryInterface, Method method) {
 		String key = getKey(queryInterface, method) ;

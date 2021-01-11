@@ -22,7 +22,8 @@ public class ReflectUtils {
 		}
 		
 		PropertyDescriptor propertyDescriptor = getPropertyDescriptor(obj.getClass(), field.getName());
-		if( propertyDescriptor != null ) {
+		Method readMethod = (propertyDescriptor==null)?null:propertyDescriptor.getReadMethod();
+		if( readMethod != null ) {
 			try {
 				return propertyDescriptor.getReadMethod().invoke(obj);
 			} catch (Exception e) {
@@ -35,6 +36,32 @@ public class ReflectUtils {
 			
 			try {
 				return field.get(obj);
+			} catch (Exception e) {
+				throw new PropertyOperationException(e);
+			} 
+		}
+	}
+	
+	public static void setFieldValue(Object obj, Field field, Object value) {
+		if( field == null ) {
+			throw new IllegalArgumentException("field is null");
+		}
+		
+		PropertyDescriptor propertyDescriptor = getPropertyDescriptor(obj.getClass(), field.getName());
+		Method writeMethod = (propertyDescriptor == null) ? null : propertyDescriptor.getWriteMethod();
+		if( writeMethod != null ) {
+			try {
+				writeMethod.invoke(obj, value);
+			} catch (Exception e) {
+				throw new PropertyOperationException(e);
+			}
+		}else {
+			if( !field.isAccessible() ) {
+				field.setAccessible(true);
+			}
+			
+			try {
+				field.set(obj, value);
 			} catch (Exception e) {
 				throw new PropertyOperationException(e);
 			} 

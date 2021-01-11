@@ -15,7 +15,6 @@ import me.ooi.tinyquery.util.ScanUtils;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class XmlQuerySourceReader {
 	

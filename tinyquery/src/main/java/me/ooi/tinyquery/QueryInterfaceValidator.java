@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class QueryInterfaceValidator {
 	

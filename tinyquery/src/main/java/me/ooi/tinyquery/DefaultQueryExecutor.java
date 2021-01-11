@@ -3,7 +3,6 @@ package me.ooi.tinyquery;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -22,18 +21,12 @@ import org.apache.commons.dbutils.handlers.MapListHandler;
 
 import me.ooi.tinyquery.dbutils.ColumnListHandler;
 import me.ooi.tinyquery.dbutils.SingleColumnResultHandler;
-import me.ooi.tinyquery.util.ClassUtils;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class DefaultQueryExecutor implements QueryExecutor{
 	
-	public static final Class<?>[] IS_NOT_BEAN_CLASS = new Class<?>[]{
-		String.class, Number.class, Boolean.class, Date.class
-	};
-
 	protected DataSource dataSource;
 	
 	@Override
@@ -60,12 +53,9 @@ public class DefaultQueryExecutor implements QueryExecutor{
 		RowProcessor rowProcessor = new BasicRowProcessor(new GenerousBeanProcessor());
 		
 		if (Collection.class.isAssignableFrom(def.getReturnType())) {
+			Class genericClass = def.getGenericReturnClass();
 			
-			Class<?> genericClass = null;
-			if( def.getReturnType().equals(def.getGenericReturnType())/* have not Generic type */ || 
-				(genericClass = ClassUtils.getFirstGenericClass(def.getGenericReturnType())) == null ||
-				Map.class.isAssignableFrom(genericClass) ) {
-				
+			if( genericClass == null || Map.class.isAssignableFrom(genericClass) ) {
 				return new MapListHandler(rowProcessor);
 			}
 			
@@ -73,7 +63,7 @@ public class DefaultQueryExecutor implements QueryExecutor{
 				return new ArrayListHandler(rowProcessor);
 			}
 			
-			if( isNotBean(genericClass) ) {
+			if( isJavaPackageClass(genericClass) ) {
 				return new ColumnListHandler(genericClass);
 			}else {
 				return new BeanListHandler(genericClass, rowProcessor);
@@ -89,7 +79,7 @@ public class DefaultQueryExecutor implements QueryExecutor{
 			
 		} else {
 			
-			if( isNotBean(def.getReturnType()) ) {
+			if( isJavaPackageClass(def.getReturnType()) ) {
 				return new SingleColumnResultHandler(def.getReturnType());
 			}else {
 				return new BeanHandler(def.getReturnType(), rowProcessor);
@@ -98,14 +88,8 @@ public class DefaultQueryExecutor implements QueryExecutor{
 		}
 	}
 	
-	private boolean isNotBean(Class<?> clazz) {
-		for (Class<?> signletonClass : IS_NOT_BEAN_CLASS) {
-			if( signletonClass == clazz || signletonClass.isAssignableFrom(clazz) ) {
-				return true;
-			}
-		}
-		
-		return false;
+	private boolean isJavaPackageClass(Class<?> clazz) {
+		return clazz.getName().startsWith("java.");
 	}
 
 	private Connection getConnection() throws SQLException {

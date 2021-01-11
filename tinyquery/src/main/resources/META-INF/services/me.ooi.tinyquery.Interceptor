@@ -1,13 +1,14 @@
 
 
-me.ooi.tinyquery.interceptors.DefaultInterceptor
-me.ooi.tinyquery.interceptors.PrePagingInterceptor
-me.ooi.tinyquery.interceptors.BaseInsertInterceptor
-me.ooi.tinyquery.interceptors.BaseSelectListInterceptor
-me.ooi.tinyquery.interceptors.BaseSelectOneInterceptor
-me.ooi.tinyquery.interceptors.BaseUpdateInterceptor
-me.ooi.tinyquery.interceptors.CriteriaInterceptor
-me.ooi.tinyquery.interceptors.PagingInterceptor
-me.ooi.tinyquery.interceptors.ConvertInterceptor
-me.ooi.tinyquery.interceptors.PrintInterceptor
+me.ooi.tinyquery.interceptor.DefaultInterceptor
+me.ooi.tinyquery.interceptor.paging.PrePagingInterceptor
+me.ooi.tinyquery.interceptor.base.BaseInsertInterceptor
+me.ooi.tinyquery.interceptor.base.BaseSelectListInterceptor
+me.ooi.tinyquery.interceptor.base.BaseSelectObjsInterceptor
+me.ooi.tinyquery.interceptor.base.BaseSelectOneInterceptor
+me.ooi.tinyquery.interceptor.base.BaseUpdateInterceptor
+me.ooi.tinyquery.interceptor.criteria.CriteriaInterceptor
+me.ooi.tinyquery.interceptor.paging.PagingInterceptor
+me.ooi.tinyquery.interceptor.ConvertInterceptor
+me.ooi.tinyquery.interceptor.PrintInterceptor
 

@@ -4,7 +4,6 @@ import java.sql.Connection;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class ConnectionHolder {
 	

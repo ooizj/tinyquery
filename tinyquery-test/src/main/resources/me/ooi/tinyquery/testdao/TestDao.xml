@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<querys>
+	
+	<select id="getT1sByCreateTime">
+	<![CDATA[
+		select * from t1 where create_time >= ? and create_time < ?
+		order by id desc
+	]]>
+	</select>
+	
+</querys>

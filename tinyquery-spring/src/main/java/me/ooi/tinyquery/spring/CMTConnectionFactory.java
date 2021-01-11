@@ -9,7 +9,6 @@ import me.ooi.tinyquery.ConnectionFactory;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class CMTConnectionFactory implements ConnectionFactory {
 

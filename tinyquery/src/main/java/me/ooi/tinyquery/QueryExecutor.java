@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public interface QueryExecutor extends Service {
 	

@@ -6,7 +6,6 @@ import me.ooi.tinyquery.ServiceRegistry;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class QueryFactoryBean<T> implements FactoryBean{
 

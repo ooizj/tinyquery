@@ -23,7 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 @SuppressWarnings("rawtypes")
 @Slf4j

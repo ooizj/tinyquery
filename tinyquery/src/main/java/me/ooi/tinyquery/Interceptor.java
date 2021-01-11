@@ -1,5 +1,6 @@
 package me.ooi.tinyquery;
 
+import java.lang.reflect.Method;
 import java.sql.SQLException;
 
 /**
@@ -7,9 +8,9 @@ import java.sql.SQLException;
  */
 public interface Interceptor {
 	
-	boolean accept(QueryDefinition queryDefinition);
+	boolean accept(QueryDefinition queryDefinition, Method method);
 	
-	void prepare(QueryDefinition queryDefinition);
+	void prepare(QueryDefinition queryDefinition, Method method);
 	
 	Object intercept(Invocation invocation) throws SQLException;
 

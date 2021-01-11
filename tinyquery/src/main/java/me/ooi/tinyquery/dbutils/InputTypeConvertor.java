@@ -12,7 +12,6 @@ import me.ooi.typeconvertor.TypeConvertUtils;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class InputTypeConvertor {
 	

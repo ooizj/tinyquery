@@ -7,7 +7,6 @@ import org.apache.commons.dbutils.ColumnHandler;
 
 /**
  * @author jun.zhao
- * @since 1.0
  */
 public class UtilDateColumnHandler implements ColumnHandler {
 	
