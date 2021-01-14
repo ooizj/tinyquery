@@ -1,5 +1,8 @@
 
-tinyquery 是一个持久层工具
+tinyquery 是一个持久层工具  
+
+依赖的commons-dbutils为[https://github.com/ooizj/commons-dbutils.git](https://github.com/ooizj/commons-dbutils.git)  
+branch: DBUTILS_1_7_fixbug
 
 ## 使用示例
 
