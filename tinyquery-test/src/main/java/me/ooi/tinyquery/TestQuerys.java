@@ -287,6 +287,20 @@ public class TestQuerys {
 			}
 		});
 		
+		assertThat(testDao.getT1s2(NAME)).isNotEmpty().are(new Condition<T1>() {
+			@Override
+			public boolean matches(T1 v) {
+				return NAME.equals(v.getName());
+			}
+		});
+		
+		assertThat(testDao.getT1s3(ID, NAME, new Page(1, 3))).isNotEmpty().hasSize(1).are(new Condition<T1>() {
+			@Override
+			public boolean matches(T1 v) {
+				return ID.equals(v.getId()) && NAME.equals(v.getName());
+			}
+		});
+		
 	}
 	
 	
@@ -525,6 +539,20 @@ public class TestQuerys {
 						&& NAME.equals(v.getName()) 
 						&& dayEq(BIRTHDAY, v.getUserBirthday())
 						&& timeEq(NEW_CREATE_DATE, v.getCreateTime());
+			}
+		});
+		
+		assertThat(testDao.getT1s2(NAME)).isNotEmpty().are(new Condition<T1>() {
+			@Override
+			public boolean matches(T1 v) {
+				return NAME.equals(v.getName());
+			}
+		});
+		
+		assertThat(testDao.getT1s3(ID, NAME, new Page(1, 3))).isNotEmpty().hasSize(1).are(new Condition<T1>() {
+			@Override
+			public boolean matches(T1 v) {
+				return ID.equals(v.getId()) && NAME.equals(v.getName());
 			}
 		});
 		

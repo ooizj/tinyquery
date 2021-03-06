@@ -12,6 +12,7 @@ import me.ooi.tinyquery.interceptor.base.Page;
 import me.ooi.tinyquery.interceptor.base.PageResult;
 import me.ooi.tinyquery.interceptor.criteria.Criteria;
 import me.ooi.tinyquery.interceptor.criteria.CriteriaParam;
+import me.ooi.tinyquery.interceptor.namedparam.Param;
 import me.ooi.tinyquery.po.T1;
 
 /**
@@ -74,5 +75,11 @@ public interface TestDao extends BaseQuery<T1>{
 	//This is not recommended
 	@Select("select * from t1 where id not in(?) ")
 	PageResult<T1> getT1sByCriteria3(Integer id, @CriteriaParam(prefix = "and") Criteria criteria, Page page);
+	
+	@Select("select * from t1 where name= #{name} order by id desc ")
+	List<T1> getT1s2(@Param("name") String name);
+	
+	@Select("select * from t1 where name= #{name} and 1=1 and id = #{id} order by id desc ")
+	List<T1> getT1s3(@Param("id") Integer id, @Param("name") String name, Page page);
 	
 }

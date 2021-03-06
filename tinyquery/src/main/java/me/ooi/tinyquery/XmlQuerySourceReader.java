@@ -2,6 +2,7 @@ package me.ooi.tinyquery;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -10,6 +11,8 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
 
 import me.ooi.tinyquery.util.ScanUtils;
 
@@ -19,6 +22,12 @@ import me.ooi.tinyquery.util.ScanUtils;
 public class XmlQuerySourceReader {
 	
 	private static final Map<String, String> EMPTY = new HashMap<String, String>();
+	
+	private static EntityResolver ignoreDtdEntityResolver = new EntityResolver() {
+		public InputSource resolveEntity(String publicId, String systemId) {
+			return new InputSource(new StringReader(""));
+		}
+	};
 	
 	private Class<?> queryInterfaces;
 	public XmlQuerySourceReader(Class<?> queryInterfaces) {
@@ -51,6 +60,7 @@ public class XmlQuerySourceReader {
 	//获取Document
 	private Document getDocument(InputStream is){
 		SAXReader reader = new SAXReader() ; 
+		reader.setEntityResolver(ignoreDtdEntityResolver);
 		Document doc = null ; 
 		try {
 			doc = reader.read(is) ;

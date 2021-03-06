@@ -5,7 +5,13 @@ import java.beans.PropertyDescriptor;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -20,6 +26,7 @@ import me.ooi.tinyquery.interceptor.base.Page;
 import me.ooi.tinyquery.interceptor.base.PageResult;
 import me.ooi.tinyquery.interceptor.criteria.Criteria;
 import me.ooi.tinyquery.interceptor.criteria.CriteriaParam;
+import me.ooi.tinyquery.interceptor.namedparam.Param;
 import me.ooi.tinyquery.util.ClassUtils;
 import me.ooi.tinyquery.util.ReflectUtils;
 
@@ -267,6 +274,110 @@ public class TestTinyquery {
 		originArguments = new Object[]{"year", criteria, "userId"};
 		index = ArrayUtils.indexOf(originArguments, Criteria.class);
 		System.out.println(index);
+	}
+	
+	@Test
+	public void t14() {
+		//#\{([a-zA-Z][a-zA-Z_0-9]*)\}
+		Pattern pattern = Pattern.compile("#\\{([a-zA-Z][a-zA-Z_0-9]*)\\}");
+		String str = "select * from t1 where name= #{name} and id = #{id} order by id desc ";
+		Matcher matcher = pattern.matcher(str);
+		StringBuffer stringBuffer = new StringBuffer();
+		while( matcher.find() ) {
+			System.out.println(matcher.group(1));
+			matcher.appendReplacement(stringBuffer, "?");
+		}
+		matcher.appendTail(stringBuffer);
+		System.out.println(stringBuffer);
+	}
+	
+	@Test
+	public void t15() {
+		
+		Method method = (new Object() {
+			@SuppressWarnings("unused")
+			public void m(String p0, @Param("name") String name, @Param("sex") Integer sex, @Param("id") Integer id, Page page) {}
+		}).getClass().getDeclaredMethods()[0];
+		Object[] args = new Object[] {11,22,33,44,55};
+		System.out.println("args="+Arrays.asList(args));
+		
+		List<String> methodParamNameList = new ArrayList<String>();
+		//#\{([a-zA-Z][a-zA-Z_0-9]*)\}
+		Pattern pattern = Pattern.compile("#\\{([a-zA-Z][a-zA-Z_0-9]*)\\}");
+		String str = "select * from t1 where name= #{name} and 1=1 and id = #{id} and 1!=2 and first_name=#{name} order by id desc";
+		Matcher matcher = pattern.matcher(str);
+		StringBuffer stringBuffer = new StringBuffer();
+		while( matcher.find() ) {
+			methodParamNameList.add(matcher.group(1));
+			matcher.appendReplacement(stringBuffer, "?");
+		}
+		matcher.appendTail(stringBuffer);
+		System.out.println(stringBuffer);
+		
+		int paramCount = method.getParameterTypes().length;
+		
+		//Continuity check
+		int lastIndex = -1;
+		int namedParamStartIndex = -1; //first entry index
+		for (int i = 0; i < paramCount; i++) {
+			Param param = ClassUtils.getAnnotationByIndex(method, i, Param.class);
+			System.out.println(i+":"+lastIndex);
+			if( param != null ) {
+				if( lastIndex == -1 ) {
+					namedParamStartIndex = i;
+				}else {
+					if( lastIndex+1 != i ) {
+						System.out.println("error");
+						break;
+					}
+				}
+				lastIndex = i ; 
+			}
+		}
+		int namedParamEndIndex = lastIndex;
+		System.out.println("in="+namedParamStartIndex+",out="+namedParamEndIndex);
+		
+		//key: methodParamName; value: methodParamIndex
+		Map<String, Integer> methodParamName2IndexMap = new HashMap<String, Integer>();
+		
+		for (int i = 0; i < paramCount; i++) {
+			Param param = ClassUtils.getAnnotationByIndex(method, i, Param.class);
+			if( param != null ) {
+				String paramName = param.value();
+				methodParamName2IndexMap.put(paramName, i);
+			}
+		}
+		
+		List<Integer> namedParamIndexList = new ArrayList<Integer>();
+		for (String methodParamName : methodParamNameList) {
+			Integer methodParamIndex = methodParamName2IndexMap.get(methodParamName);
+			namedParamIndexList.add(methodParamIndex);
+		}
+		System.out.println("namedParamIndexList="+namedParamIndexList);
+		
+		System.out.print("args in namedParamIndexList=");
+		for (Integer namedParamIndex : namedParamIndexList) {
+			System.out.print(args[namedParamIndex]+",");
+		}
+		System.out.println();
+		
+		
+		int lengthOfSegment1 = namedParamStartIndex;
+		int lengthOfSegment2 = namedParamIndexList.size();
+		int lengthOfSegment3 = args.length-namedParamEndIndex-1;
+		System.out.println(lengthOfSegment1+":"+lengthOfSegment2+":"+lengthOfSegment3);
+		Object[] newArgs = new Object[lengthOfSegment1+lengthOfSegment2+lengthOfSegment3];
+		if( lengthOfSegment1 > 0 ) {
+			System.arraycopy(args, 0, newArgs, 0, lengthOfSegment1);
+		}
+		for (int i = 0; i < namedParamIndexList.size(); i++) {
+			newArgs[namedParamStartIndex+i] = args[namedParamIndexList.get(i)];
+		}
+		if( lengthOfSegment3 > 0 ) {
+			System.arraycopy(args, namedParamEndIndex+1, newArgs, lengthOfSegment1+lengthOfSegment2, lengthOfSegment3);
+		}
+		
+		System.out.println("newArgs="+Arrays.asList(newArgs));
 	}
 	
 }

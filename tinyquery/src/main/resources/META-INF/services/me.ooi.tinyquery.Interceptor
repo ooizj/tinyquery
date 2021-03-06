@@ -1,6 +1,7 @@
 
 
 me.ooi.tinyquery.interceptor.DefaultInterceptor
+me.ooi.tinyquery.interceptor.namedparam.NamedParameterInterceptor
 me.ooi.tinyquery.interceptor.paging.PrePagingInterceptor
 me.ooi.tinyquery.interceptor.base.BaseInsertInterceptor
 me.ooi.tinyquery.interceptor.base.BaseSelectListInterceptor
