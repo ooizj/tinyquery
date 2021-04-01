@@ -33,11 +33,6 @@
 		    <version>DBUTILS_1_7_fixbug</version>
 		</dependency>
 
-		<dependency>
-			<groupId>me.ooi</groupId>
-			<artifactId>typeconvertor</artifactId>
-			<version>0.5</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
