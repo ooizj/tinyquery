@@ -12,8 +12,26 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+	
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
+
+		<dependency>
+		    <groupId>com.github.ooizj</groupId>
+		    <artifactId>typeconvertor</artifactId>
+		    <version>v0.5.m1</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.github.ooizj</groupId>
+		    <artifactId>commons-dbutils</artifactId>
+		    <version>DBUTILS_1_7_fixbug</version>
+		</dependency>
 
 		<dependency>
 			<groupId>me.ooi</groupId>
@@ -55,12 +73,6 @@
 			<version>1.9.3</version>
 		</dependency>
 
-
-		<dependency>
-			<groupId>commons-dbutils</groupId>
-			<artifactId>commons-dbutils</artifactId>
-			<version>1.7</version>
-		</dependency>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
