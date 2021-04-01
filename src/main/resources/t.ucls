@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="me.ooi.tinyquery.TinyQuerySetup" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/TinyQuerySetup.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="141" x="4218" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="me.ooi.tinyquery.QueryProxyManager" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryProxyManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="185" x="5943" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="me.ooi.tinyquery.QueryDefinitionManager" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryDefinitionManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="283" x="8514" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="4" language="java" name="me.ooi.tinyquery.QueryExecutor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryExecutor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="221" x="7502" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="me.ooi.tinyquery.QueryInterfaceValidator" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryInterfaceValidator.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="235" x="5943" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="me.ooi.tinyquery.NotFoundCommandException" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/NotFoundCommandException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="257" x="3723" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="7" language="java" name="me.ooi.tinyquery.Service" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/Service.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="103" x="7228" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="8" language="java" name="me.ooi.tinyquery.ServiceRegistry" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/ServiceRegistry.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="252" x="6375" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="9" language="java" name="me.ooi.tinyquery.ConnectionFactory" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/ConnectionFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="217" x="6998" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="10" language="java" name="me.ooi.tinyquery.QueryExecutionContext" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryExecutionContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="262" x="8837" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="me.ooi.tinyquery.Configuration" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/Configuration.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="194" x="6168" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="me.ooi.tinyquery.QueryExecutionException" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryExecutionException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="241" x="1197" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="me.ooi.tinyquery.XmlQuerySourceReader" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/XmlQuerySourceReader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="207" x="3223" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="me.ooi.tinyquery.DefaultConnectionFactory" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/DefaultConnectionFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="217" x="6971" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="me.ooi.tinyquery.Invocation" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/Invocation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="280" x="8837" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="me.ooi.tinyquery.QueryExecutionContextBuildException" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryExecutionContextBuildException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="301" x="4399" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="me.ooi.tinyquery.ServiceNotConfiguredException" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/ServiceNotConfiguredException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="270" x="6795" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="me.ooi.tinyquery.QueryDefinition" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryDefinition.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="747" width="224" x="7999" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="19" language="java" name="me.ooi.tinyquery.Interceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/Interceptor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="220" x="5058" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="20" language="java" name="me.ooi.tinyquery.ConnectionHolder" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/ConnectionHolder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="271" x="2515" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="me.ooi.tinyquery.QueryDefinitionProvider" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryDefinitionProvider.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="237" x="1798" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="me.ooi.tinyquery.QueryInvocationHandler" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryInvocationHandler.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="208" x="4740" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="23" language="java" name="me.ooi.tinyquery.QuerySource" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QuerySource.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="162" x="2826" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="24" language="java" name="me.ooi.tinyquery.DefaultQueryExecutor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/DefaultQueryExecutor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="331" x="7371" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="25" language="java" name="me.ooi.tinyquery.QueryDefinition.Type" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryDefinition.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="119" x="7999" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="26" language="java" name="me.ooi.tinyquery.QueryBuildException" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/QueryBuildException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="217" x="117" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <annotation id="27" language="java" name="me.ooi.tinyquery.annotation.Update" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/annotation/Update.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="136" x="1021" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <annotation id="28" language="java" name="me.ooi.tinyquery.annotation.Interceptors" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/annotation/Interceptors.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="154" x="374" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <annotation id="29" language="java" name="me.ooi.tinyquery.annotation.Select" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/annotation/Select.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="136" x="7637" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <class id="30" language="java" name="me.ooi.tinyquery.dbutils.InputTypeConvertor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/dbutils/InputTypeConvertor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="262" x="6696" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="me.ooi.tinyquery.dbutils.SingleColumnResultHandler" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/dbutils/SingleColumnResultHandler.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="210" x="2075" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="me.ooi.tinyquery.dbutils.UtilDateColumnHandler" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/dbutils/UtilDateColumnHandler.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="155" x="3028" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="me.ooi.tinyquery.dbutils.ColumnListHandler" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/dbutils/ColumnListHandler.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="213" x="3470" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="me.ooi.tinyquery.interceptor.ConvertInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/ConvertInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="220" x="4798" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="me.ooi.tinyquery.interceptor.DefaultInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/DefaultInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="220" x="4538" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="me.ooi.tinyquery.interceptor.PrintInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/PrintInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="222" x="4276" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="me.ooi.tinyquery.interceptor.InterceptorUtils" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/InterceptorUtils.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="280" x="1478" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="me.ooi.tinyquery.interceptor.base.AbstractBaseQueryInterceptor" 
+    project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/AbstractBaseQueryInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="207" x="7255" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="me.ooi.tinyquery.interceptor.base.BaseSelectListInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/BaseSelectListInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="220" x="7739" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="me.ooi.tinyquery.interceptor.base.MysqlIdGenerator" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/MysqlIdGenerator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="320" x="7763" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="me.ooi.tinyquery.interceptor.base.QueryInterfaceUtils" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/QueryInterfaceUtils.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="177" x="4988" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <annotation id="42" language="java" name="me.ooi.tinyquery.interceptor.base.Id" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/Id.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="150" x="2325" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <interface id="43" language="java" name="me.ooi.tinyquery.interceptor.base.IdGenerator" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/IdGenerator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="196" x="7763" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="44" language="java" name="me.ooi.tinyquery.interceptor.base.OracleIdGenerator" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/OracleIdGenerator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="351" x="8123" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="me.ooi.tinyquery.interceptor.base.TooManyResultsException" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/TooManyResultsException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="243" x="8311" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="me.ooi.tinyquery.interceptor.base.OraclePaging" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/OraclePaging.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="254" x="6081" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="47" language="java" name="me.ooi.tinyquery.interceptor.base.TotalGenerator" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/TotalGenerator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="212" x="5670" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="48" language="java" name="me.ooi.tinyquery.interceptor.base.BaseSelectOneInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/BaseSelectOneInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="220" x="6699" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="me.ooi.tinyquery.interceptor.base.OracleTotalGenerator" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/OracleTotalGenerator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="150" x="3246" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <annotation id="50" language="java" name="me.ooi.tinyquery.interceptor.base.Table" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/Table.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="150" x="831" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <class id="51" language="java" name="me.ooi.tinyquery.interceptor.base.BaseUpdateInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/BaseUpdateInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="220" x="6959" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="me.ooi.tinyquery.interceptor.base.MysqlTotalGenerator" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/MysqlTotalGenerator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="150" x="3436" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="me.ooi.tinyquery.interceptor.base.BaseSelectObjsInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/BaseSelectObjsInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="220" x="7479" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="54" language="java" name="me.ooi.tinyquery.interceptor.base.Paging" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/Paging.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="254" x="6402" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="55" language="java" name="me.ooi.tinyquery.interceptor.base.EntityUtils" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/EntityUtils.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="232" x="5205" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="me.ooi.tinyquery.interceptor.base.Page" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/Page.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="166" x="8105" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="me.ooi.tinyquery.interceptor.base.AbstractTotalGenerator" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/AbstractTotalGenerator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="406" x="5088" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="me.ooi.tinyquery.interceptor.base.MysqlPaging" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/MysqlPaging.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="254" x="6677" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="me.ooi.tinyquery.interceptor.base.BaseInsertInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/BaseInsertInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="220" x="7219" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="me.ooi.tinyquery.interceptor.base.PageResult" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/PageResult.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="333" width="203" x="8594" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="61" language="java" name="me.ooi.tinyquery.interceptor.base.BaseQuery" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/base/BaseQuery.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="223" x="568" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <annotation id="62" language="java" name="me.ooi.tinyquery.interceptor.criteria.CriteriaParam" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/CriteriaParam.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="158" x="4020" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <class id="63" language="java" name="me.ooi.tinyquery.interceptor.criteria.CriteriaBuildException" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/CriteriaBuildException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="221" x="7105" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="me.ooi.tinyquery.interceptor.criteria.AbstractCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/AbstractCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="192" x="9403" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="me.ooi.tinyquery.interceptor.criteria.EqualsCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/EqualsCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="188" x="8719" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="me.ooi.tinyquery.interceptor.criteria.AndCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/AndCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="188" x="8947" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="me.ooi.tinyquery.interceptor.criteria.CriteriaInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/CriteriaInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="207" width="278" x="3626" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="me.ooi.tinyquery.interceptor.criteria.InCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/InCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="188" x="11083" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="me.ooi.tinyquery.interceptor.criteria.LessThanOrEqualsCriteria" 
+    project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/LessThanOrEqualsCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="222" x="10315" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="me.ooi.tinyquery.interceptor.criteria.IsNullCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/IsNullCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="188" x="9631" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="71" language="java" name="me.ooi.tinyquery.interceptor.criteria.Criteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/Criteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="531" width="188" x="9403" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="72" language="java" name="me.ooi.tinyquery.interceptor.criteria.GreaterThanOrEqualsCriteria" 
+    project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/GreaterThanOrEqualsCriteria.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="235" x="10808" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="73" language="java" name="me.ooi.tinyquery.interceptor.criteria.OrCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/OrCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="188" x="9403" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="74" language="java" name="me.ooi.tinyquery.interceptor.criteria.IsNotNullCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/IsNotNullCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="188" x="9175" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="75" language="java" name="me.ooi.tinyquery.interceptor.criteria.LessThanCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/LessThanCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="188" x="8263" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="76" language="java" name="me.ooi.tinyquery.interceptor.criteria.GreaterThanCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/GreaterThanCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="191" x="10577" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="77" language="java" name="me.ooi.tinyquery.interceptor.criteria.LikeCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/LikeCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="188" x="10087" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="78" language="java" name="me.ooi.tinyquery.interceptor.criteria.NotInCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/NotInCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="188" x="8491" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="79" language="java" name="me.ooi.tinyquery.interceptor.criteria.NotEqualsCriteria" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/criteria/NotEqualsCriteria.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="188" x="9859" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <annotation id="80" language="java" name="me.ooi.tinyquery.interceptor.namedparam.Param" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/namedparam/Param.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="184" x="6127" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <class id="81" language="java" name="me.ooi.tinyquery.interceptor.namedparam.NamedParameterInterceptor" 
+    project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/namedparam/NamedParameterInterceptor.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="264" x="5058" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="82" language="java" name="me.ooi.tinyquery.interceptor.paging.PagingInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/paging/PagingInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="292" x="3944" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="83" language="java" name="me.ooi.tinyquery.interceptor.paging.PrePagingInterceptor" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/interceptor/paging/PrePagingInterceptor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="207" width="268" x="5362" y="757"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="84" language="java" name="me.ooi.tinyquery.util.ReflectUtils" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/util/ReflectUtils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="337" x="5477" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="85" language="java" name="me.ooi.tinyquery.util.ExceptionUtil" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/util/ExceptionUtil.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="231" x="7366" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="86" language="java" name="me.ooi.tinyquery.util.ScanUtils" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/util/ScanUtils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="233" x="5854" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="87" language="java" name="me.ooi.tinyquery.util.ClassUtils" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/util/ClassUtils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="404" x="6351" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="88" language="java" name="me.ooi.tinyquery.util.PropertyOperationException" project="tinyquery" 
+    file="/tinyquery/src/main/java/me/ooi/tinyquery/util/PropertyOperationException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="252" x="7813" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="89">    
+    <end type="SOURCE" refId="82"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="90">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="91" name="queryDefinitionCache"/>      
+      <multiplicity id="92" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="93">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <association id="94">    
+    <end type="SOURCE" refId="66" navigable="false">      
+      <attribute id="95" name="criterias"/>      
+      <multiplicity id="96" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="64" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="97">    
+    <end type="SOURCE" refId="70"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <realization id="98">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <realization id="99">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="54"/>  
+  </realization>  
+  <generalization id="100">    
+    <end type="SOURCE" refId="53"/>    
+    <end type="TARGET" refId="38"/>  
+  </generalization>  
+  <realization id="101">    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="47"/>  
+  </realization>  
+  <generalization id="102">    
+    <end type="SOURCE" refId="65"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <generalization id="103">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="38"/>  
+  </generalization>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="75"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <association id="105">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="106" name="interceptors"/>      
+      <multiplicity id="107" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="108">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="109" name="queryExecutionContext"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="111">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="43"/>  
+  </realization>  
+  <association id="112">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="113" name="queryDefinition"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="115">    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="38"/>  
+  </generalization>  
+  <generalization id="116">    
+    <end type="SOURCE" refId="52"/>    
+    <end type="TARGET" refId="57"/>  
+  </generalization>  
+  <association id="117">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="118" name="inputTypeConvertor"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="120">    
+    <end type="SOURCE" refId="73"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <realization id="121">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="122">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="57"/>  
+  </generalization>  
+  <realization id="123">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="124">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="125" name="totalGenerator"/>      
+      <multiplicity id="126" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="127">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="128" name="queryDefinitionCache"/>      
+      <multiplicity id="129" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="131" name="paging"/>      
+      <multiplicity id="132" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="54" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="133">    
+    <end type="SOURCE" refId="68"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <association id="134">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="135" name="queryInterfaceValidator"/>      
+      <multiplicity id="136" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="137">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="38"/>  
+  </generalization>  
+  <association id="138">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="139" name="queryDefinitionCache"/>      
+      <multiplicity id="140" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="141">    
+    <bendpoint x="7732" y="410"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="142" name="queryExecutor"/>      
+      <multiplicity id="143" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="144">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="145">    
+    <end type="SOURCE" refId="79"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <realization id="146">    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="54"/>  
+  </realization>  
+  <generalization id="147">    
+    <end type="SOURCE" refId="69"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <association id="148">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="149" name="idGenerator"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="151">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="43"/>  
+  </realization>  
+  <generalization id="152">    
+    <end type="SOURCE" refId="78"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <association id="153">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="154" name="INSTANCE"/>      
+      <multiplicity id="155" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="156">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <generalization id="157">    
+    <end type="SOURCE" refId="74"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <generalization id="158">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <generalization id="159">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <realization id="160">    
+    <end type="SOURCE" refId="67"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="161">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="162" name="queryExecutor"/>      
+      <multiplicity id="163" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="164">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="165" name="connectionFactory"/>      
+      <multiplicity id="166" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="167">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="25"/>  
+  </nesting>  
+  <realization id="168">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="169">    
+    <end type="SOURCE" refId="71" navigable="false">      
+      <attribute id="170" name="criterias"/>      
+      <multiplicity id="171" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="64" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="172">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="173" name="type"/>      
+      <multiplicity id="174" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="175">    
+    <end type="SOURCE" refId="83"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <association id="176">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="177" name="configuration"/>      
+      <multiplicity id="178" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="179">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="180" name="queryDefinitionCache"/>      
+      <multiplicity id="181" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="182">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="183" name="queryProxyManager"/>      
+      <multiplicity id="184" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="185">    
+    <end type="SOURCE" refId="73" navigable="false">      
+      <attribute id="186" name="criteria"/>      
+      <multiplicity id="187" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="64" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="188">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <realization id="189">    
+    <end type="SOURCE" refId="81"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <generalization id="190">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="38"/>  
+  </generalization>  
+  <association id="191">    
+    <bendpoint x="5912" y="757"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="192" name="interceptors"/>      
+      <multiplicity id="193" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="194">    
+    <end type="SOURCE" refId="77"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <generalization id="195">    
+    <end type="SOURCE" refId="76"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

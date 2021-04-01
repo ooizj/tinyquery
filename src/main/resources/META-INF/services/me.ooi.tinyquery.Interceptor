@@ -1,0 +1,15 @@
+
+
+me.ooi.tinyquery.interceptor.DefaultInterceptor
+me.ooi.tinyquery.interceptor.namedparam.NamedParameterInterceptor
+me.ooi.tinyquery.interceptor.paging.PrePagingInterceptor
+me.ooi.tinyquery.interceptor.base.BaseInsertInterceptor
+me.ooi.tinyquery.interceptor.base.BaseSelectListInterceptor
+me.ooi.tinyquery.interceptor.base.BaseSelectObjsInterceptor
+me.ooi.tinyquery.interceptor.base.BaseSelectOneInterceptor
+me.ooi.tinyquery.interceptor.base.BaseUpdateInterceptor
+me.ooi.tinyquery.interceptor.criteria.CriteriaInterceptor
+me.ooi.tinyquery.interceptor.paging.PagingInterceptor
+me.ooi.tinyquery.interceptor.ConvertInterceptor
+me.ooi.tinyquery.interceptor.PrintInterceptor
+
